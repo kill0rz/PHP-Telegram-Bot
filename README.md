@@ -6,7 +6,7 @@ A full functional bot for crypto messenger Telegram written in PHP
 1. Clone this repo
 2. Import databse from structure.sql
 3. edit config.php
-4. run `chmod +x install.sh`
+4. run `./install.sh`
 5. Setup bot in and Webhook for Telegram
 6. optional: put your faces in *chrisify/faces*
 7. report any bugs you encounter, please!

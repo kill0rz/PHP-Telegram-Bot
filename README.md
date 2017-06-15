@@ -12,8 +12,8 @@ A full functional bot for crypto messenger Telegram written in PHP
 7. report any bugs you encounter, please!
 
 # Update the bot
-Just `git pull`.
-If you made local changes, you can use `./update.sh` to overwrite them.
+Run `update.sh`.
+Local changes will be overwritten!
 
 # Third party software
 

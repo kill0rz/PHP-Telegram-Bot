@@ -1,0 +1,15 @@
+closevote - Schließe Voting
+delpic - Lösche aktuelles Bild
+help - Hilfe
+hitlerwitz - Tells the infamous Hitlerwitz!
+lastseen - Zeigt dir an, wann der Nutzer das letzte mal online war
+nextpic - Arbeite Bilder fürs Forum ab
+postall - Poste alle Bilder
+rotatepicleft - Drehe das aktuelle Bild nach links
+rotatepicright - Drehe das aktuelle Bild nach rechts
+settopic - Setze den Threadnamen
+startvote - Starte ein neues Voting
+stats - Zeigt Statistiken
+todolist - Zeigt die aktuelle ToDo-Liste
+vote - Gibt eine Stimme ab
+voteintermediateresult - Zeige Votingszwischenstand

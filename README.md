@@ -8,7 +8,8 @@ A full functional bot for crypto messenger Telegram written in PHP
 3. edit config.php
 4. put your faces in *chrisify/faces*
 5. Setup bot in and Webhook for Telegram
-6. report any bugs you encounter please!
+6. run `chmod +x forcepull.sh`
+7. report any bugs you encounter please!
 
 # Update the bot
 Just `gut pull`.

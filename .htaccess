@@ -1,16 +1,16 @@
 Deny From All
 
-<Directory /img>
-     Order Deny,Allow
-     Allow from All
-</Directory>
-
-<Directory /img/tmp>
-     Order Deny,Allow
-     Allow from All
-</Directory>
-
 <Files "bot.php">
+     Order Deny,Allow
+     Allow from All
+</Files>
+
+<Files /img/*>
+     Order Deny,Allow
+     Allow from All
+</Files>
+
+<Files /img/tmp/*>
      Order Deny,Allow
      Allow from All
 </Files>

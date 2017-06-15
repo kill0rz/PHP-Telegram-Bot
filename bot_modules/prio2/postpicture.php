@@ -10,8 +10,8 @@ function call_postpicture_help() {
 	$text = "Bitte gib an, was genau du machen willst:\n";
 	$text .= "/nextpic --> bearbeite das nächste Bild\n";
 	$text .= "/delpic --> lösche aktuelles Bild\n";
-	$text .= "/rotagepicright --> Bild rechtsherum drehen\n";
-	$text .= "/rotagepicleft --> Bild linksherum drehen\n";
+	$text .= "/rotatepicright --> Bild rechtsherum drehen\n";
+	$text .= "/rotatepicleft --> Bild linksherum drehen\n";
 	$text .= "/postall --> Schreibe alle Bilder ins Forum\n";
 	$text .= "/help --> Allgemeine Hilfe\n";
 	post_reply($text);
@@ -240,7 +240,7 @@ if ($glob_switcher == '/delpic') {
 	}
 
 }
-if ($glob_switcher == '/rotagepicleft') {
+if ($glob_switcher == '/rotatepicleft') {
 	if ($update["message"]["from"]["id"] == $admin_id) {
 		$sql = "SELECT q.*,u.username  FROM tb_pictures_queue q JOIN tb_lastseen_users u ON q.postedby=u.userid WHERE current=1 AND TRIM(threadname) IS NULL LIMIT 1;";
 		$result = $mysqli->query($sql);
@@ -272,7 +272,7 @@ if ($glob_switcher == '/rotagepicleft') {
 	}
 
 }
-if ($glob_switcher == '/rotagepicright') {
+if ($glob_switcher == '/rotatepicright') {
 	if ($update["message"]["from"]["id"] == $admin_id) {
 		$sql = "SELECT q.*,u.username  FROM tb_pictures_queue q JOIN tb_lastseen_users u ON q.postedby=u.userid WHERE current=1 AND TRIM(threadname) IS NULL LIMIT 1;";
 		$result = $mysqli->query($sql);

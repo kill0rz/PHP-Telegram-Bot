@@ -63,8 +63,8 @@ function afterpic_opertaions() {
 	global $oldname;
 	$text = "In welches Thema soll ich das Bild posten?\n";
 	$text .= "/settopic {Name} [" . $oldname . "]\n";
-	$text .= "/rotagepicright --> Bild rechtsrum drehen\n";
-	$text .= "/rotagepicleft --> Bild linksrum drehen\n";
+	$text .= "/rotatepicright --> Bild rechtsrum drehen\n";
+	$text .= "/rotatepicleft --> Bild linksrum drehen\n";
 	$text .= "/delpic --> Bild löschen";
 	post_reply($text);
 }

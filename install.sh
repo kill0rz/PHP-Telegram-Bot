@@ -2,10 +2,11 @@
 cwd=$(pwd)
 
 #rights
-chmod +x forcepull.sh
+chmod +x update.sh
 
-#gitignore
-echo "config.php" >> .gitignore
+#keep local changes
+git update-index --assume-unchanged config.php
+git update-index --assume-unchanged chrisify/
 
 #chrisify
 sudo apt update && apt install -yy libopencv-dev golang

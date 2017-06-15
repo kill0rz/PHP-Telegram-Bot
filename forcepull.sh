@@ -1,7 +1,9 @@
 #!/bin/sh
 
+git update-index --assume-unchanged config.php
+git update-index --assume-unchanged chrisify/
 
-git fetch --all
-git reset --hard origin/master
+git pull
 
-chmod +x forcepull.sh
+#rights
+chmod +x update.sh

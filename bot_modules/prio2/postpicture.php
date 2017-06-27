@@ -204,7 +204,7 @@ if ($glob_switcher == '/nextpic') {
 					while ($row3 = $result3->fetch_object()) {
 						$oldname = $row3->topicname;
 					}
-					$text = "Gepostet von " . $row2->username . " am " . date("d.m.Y", $row2->postedat) . " um " . date("H:i", $row2->postedat) . "\n";
+					$text = "Gepostet von " . $row2->username . " am " . date("d.m.Y", $row2->postedat) . " um " . date("H:i", $row2->postedat) . "Uhr.\n";
 					$text .= "In welches Thema soll ich das Bild posten?\n/settopic {Name} [" . $oldname . "]\n/delpic --> Bild löschen";
 					post_reply($text);
 				}

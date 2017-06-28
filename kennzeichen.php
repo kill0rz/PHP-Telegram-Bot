@@ -7,12 +7,13 @@ $sitecontent = explode("\n", getsite("https://www.wochenspiegel-web.de/wisl_s-cm
 
 foreach ($sitecontent as $key => $line) {
 	if (str_replace('<br><p><em>Gl&uuml;ckskennzeichen</em><br />', '', $line) != $line) {
-		$kennzeichen_tmp = preg_match("/<strong>([A-Z]{1,3}(\&nbsp\;)?\s?[A-Z]{1,2}(\&nbsp\;)?\s?[0-9]{1,4})<\/strong>/", $sitecontent[$key + 3], $matches_1);
+		$kennzeichen_tmp = preg_match("/<strong>([A-Z\&uoaml\;]{1,18}(\&nbsp\;)?\s?[A-Z\&uauml\;]{1,12}(\&nbsp\;)?\s?[0-9]{1,4})<\/strong>/", $sitecontent[$key + 3], $matches_1);
 		$gewinn_tmp = preg_match("/([0-9]{1,5})\sEuro/", $sitecontent[$key + 4], $matches_2);
+
 		if (isset($matches_1[1]) && isset($matches_2[1])) {
 			mysqli_db_connect();
 
-			$kennzeichen = trim(str_replace("&nbsp;", " ", $matches_1[1]));
+			$kennzeichen = trim(str_replace(array("&nbsp;", "&Ouml;", "&Auml;", "&Uuml;"), array(" ", "Ö", "Ä", "Ü"), $matches_1[1]));
 			echo "Kennzeichen: " . $kennzeichen . "\n";
 			$gewinn = trim($matches_2[1]);
 

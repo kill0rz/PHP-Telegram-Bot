@@ -226,9 +226,9 @@ function get_thread($ordner) {
 
 	$sql = "SELECT threadid, topic FROM bb1_threads WHERE boardid = " . $bot_boardid . " OR boardid = " . $bot_boardid_hidden . " ORDER BY threadid DESC;";
 	$result = $db->query($sql);
-	$ordner = trim(strtr(strtolower(utf8_encode($ordner)), $ersetzen));
+	$ordner = trim(strtr(strtolower($ordner), $ersetzen));
 	while ($row = $result->fetch_array()) {
-		$name = trim(strtr(strtolower(utf8_encode($row['topic'])), $ersetzen));
+		$name = trim(strtr(strtolower($row['topic']), $ersetzen));
 		if (parse_dateformats($name) == parse_dateformats($ordner)) {
 			$usenumber = $row['threadid'];
 			$usetopic = htmlentities($row['topic'], ENT_NOQUOTES | ENT_HTML401, 'ISO-8859-1');

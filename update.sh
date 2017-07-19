@@ -10,7 +10,9 @@ git update-index --assume-unchanged bot_modules/prio2/haffkrug.php
 git update-index --assume-unchanged bot_modules/prio1/03_lachsticker.php
 
 # update from repo
+git stash
 git pull
+git stash pop
 
 # run updatescripts for further action
 php update_scripts/run.php

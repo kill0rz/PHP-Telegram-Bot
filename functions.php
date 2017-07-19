@@ -222,7 +222,7 @@ function parse_dateformats($ordnername) {
 
 function get_thread($ordner) {
 	// todo neue DB-Verbidnung aufbauen
-	global $db, $bot_boardid, $usenumber, $usetopic, $ersetzen;
+	global $db, $bot_boardid, $bot_boardid_hidden, $usenumber, $usetopic, $ersetzen;
 
 	$sql = "SELECT threadid, topic FROM bb1_threads WHERE boardid = " . $bot_boardid . " OR boardid = " . $bot_boardid_hidden . " ORDER BY threadid DESC;";
 	$result = $db->query($sql);

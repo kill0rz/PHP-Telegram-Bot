@@ -205,7 +205,11 @@ if ($glob_switcher == '/nextpic') {
 						$oldname = $row3->topicname;
 					}
 					$text = "Gepostet von " . $row2->username . " am " . date("d.m.Y", $row2->postedat) . " um " . date("H:i", $row2->postedat) . "Uhr.\n";
-					$text .= "In welches Thema soll ich das Bild posten?\n/settopic {Name} [" . $oldname . "]\n/delpic --> Bild löschen";
+					$text .= "In welches Thema soll ich das Bild posten?\n";
+					$text .= "/settopic {Name} [" . $oldname . "]\n";
+					$text .= "/rotatepicright --> Bild rechtsrum drehen\n";
+					$text .= "/rotatepicleft --> Bild linksrum drehen\n";
+					$text .= "/delpic --> Bild löschen";
 					post_reply($text);
 				}
 			}

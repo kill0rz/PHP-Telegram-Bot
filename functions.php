@@ -61,6 +61,7 @@ function insert_or_update_word($word, $username) {
 
 function afterpic_opertaions() {
 	global $text, $oldname;
+	$text .= "In welches Thema soll ich das Bild posten?\n";
 	$text .= "/settopic {Name} [" . $oldname . "]\n";
 	$text .= "/rotatepicright --> Bild rechtsrum drehen\n";
 	$text .= "/rotatepicleft --> Bild linksrum drehen\n";

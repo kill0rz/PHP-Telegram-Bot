@@ -17,7 +17,7 @@ if (isset($update["message"])) {
 	mysqli_db_connect();
 	db_connect();
 
-	// logging($chatID, $update);
+	logging($chatID, $update);
 	update_lastseen($update["message"]["from"]["first_name"], $update["message"]["from"]["id"]);
 
 	foreach (glob("bot_modules/prio1/*.php") as $filename) {

@@ -3,8 +3,8 @@
 add_to_help("/todohelp --> Hilfe der ToDo-Gruppe");
 
 // ToDo-Gruppe
-if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
-// if (isset($chatID) && ($chatID == $todo_chatID)) {
+// if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
+if (isset($chatID) && ($chatID == $todo_chatID)) {
 	if (isset($update["message"]["text"])) {
 		$startcommand_tmp = explode(" ", $update["message"]["text"]);
 		switch (str_replace($bot_atname, "", strtolower($startcommand_tmp[0]))) {
@@ -36,7 +36,7 @@ if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
 		switch ($startsign) {
 			case '+':
 				// add todo
-				$sql = "INSERT INTO tb_todolist (content,wishby) VALUES ('" . $mysqli->real_escape_string(trim(substr(trim($update["message"]["text"]), 1))) . "','USERID');";
+				$sql = "INSERT INTO tb_todolist (content,wishby) VALUES ('" . $mysqli->real_escape_string(trim(substr(trim($update["message"]["text"]), 1))) . "','" . $update["message"]["from"]["id"] . "');";
 				$mysqli->query($sql);
 				post_todotable();
 				break;

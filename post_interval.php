@@ -12,3 +12,7 @@ if (isset($post_interval_text) && trim($post_interval_text) != '') {
 if (isset($post_interval_video_id) && trim($post_interval_video_id) != '') {
 	send_document($post_interval_video_id);
 }
+
+if (isset($post_interval_sticker_id) && trim($post_interval_sticker_id) != '') {
+	send_sticker($post_interval_sticker_id);
+}

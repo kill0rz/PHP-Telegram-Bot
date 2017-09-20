@@ -43,7 +43,7 @@ $randompic_chatID = "-123456";
 // Worttrigger-Wort: Nach welchem Wort soll gesucht werden?
 $triggerword = "wort";
 // Worttrigger-Sticker: Mit welchem Sticker soll geantwortet werden? (ID eintragen)
-$triggerstricker = "";
+$triggersticker = "";
 
 // Intervallaufruf Text
 $post_interval_text = "";

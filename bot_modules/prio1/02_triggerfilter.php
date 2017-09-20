@@ -1,9 +1,9 @@
 <?php
 
 // Trigger-Filter
-foreach ($triggerstricker as $triggerword => $triggerstrickerid) {
+foreach ($triggersticker as $triggerword => $triggerstickerid) {
 	if (isset($update["message"]["text"]) && preg_replace($triggerword, "", strtolower($update["message"]["text"])) != strtolower($update["message"]["text"])) {
-		send_sticker($triggerstrickerid);
+		send_sticker($triggerstickerid);
 		exit();
 	}
 }

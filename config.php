@@ -45,10 +45,26 @@ $triggerword = "wort";
 // Worttrigger-Sticker: Mit welchem Sticker soll geantwortet werden? (ID eintragen)
 $triggersticker = "";
 
+// Wie Triggersticker, aber wird nur bei bestimmten Personen ausgelöst
+$triggersticker_perperson = array(
+	array(
+		'userid' => "12345",
+		'searchpattern' => "/a+b+c+d+e+f/",
+		"stickerid" => "CAAD123456789",
+	),
+	array(
+		'userid' => "12345",
+		"searchpattern" => "/a+b+c+d+e+f/",
+		"stickerid" => "CAAD123456789",
+	),
+);
+
 // Intervallaufruf Text
 $post_interval_text = "";
 // Intervallaufruf Video (ID eintragen)
 $post_interval_video_id = "";
+// Intervallaufruf Sticker (ID eintragen)
+$post_interval_sticker_id = "";
 
 // URL zu deinem Bot (ohne / am Ende)
 $url2bot = "https://board.tld/telegram_bot";

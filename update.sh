@@ -11,7 +11,7 @@ git update-index --assume-unchanged bot_modules/prio1/03_lachsticker.php
 
 # delete lock file to avoid problems
 # don't worry, we will overwrite everythign anyway...
-rm ./.git/git.lock
+rm ./.git/index.lock
 
 # update from repo
 git stash

@@ -10,7 +10,7 @@ git update-index --assume-unchanged bot_modules/prio2/haffkrug.php
 git update-index --assume-unchanged bot_modules/prio1/03_lachsticker.php
 
 # delete lock file to avoid problems
-# don't worry, we will overwrite everythign anyway...
+# don't worry, we will overwrite everything anyway...
 rm ./.git/index.lock
 
 # update from repo

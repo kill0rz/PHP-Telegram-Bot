@@ -35,7 +35,7 @@ if ($glob_switcher == '/postall') {
 			get_thread($thread->threadname);
 
 			// Jetzt nach Nutzernamen gruppieren
-			$sql3 = "SELECT q.postedby,u.username,u.wbb_userid FROM tb_pictures_queue q JOIN tb_lastseen_users u ON q.postedby=u.userid GROUP BY postedby;";
+			$sql3 = "SELECT q.postedby,u.username,u.wbb_userid FROM tb_pictures_queue q JOIN tb_lastseen_users u ON q.postedby=u.userid GROUP BY postedby ORDER BY postedat ASC; --";
 			$result3 = $mysqli->query($sql3);
 			while ($queue = $result3->fetch_object()) {
 				unset($links);
@@ -54,7 +54,7 @@ if ($glob_switcher == '/postall') {
 				}
 
 				// für jedes Bild
-				$sql2 = "SELECT * FROM tb_pictures_queue WHERE TRIM(threadname)='" . $thread->threadname . "' AND postedby='" . $queue->postedby . "'";
+				$sql2 = "SELECT * FROM tb_pictures_queue WHERE TRIM(threadname)='" . $thread->threadname . "' AND postedby='" . $queue->postedby . "' ORDER BY postedat ASC";
 				$result2 = $mysqli->query($sql2);
 				while ($queue_pic = $result2->fetch_object()) {
 					if (!$userid_set && $trigger_poster_name) {

@@ -116,7 +116,7 @@ if (isset($chatID) && ($chatID == $todo_chatID)) {
 
 			case "~":
 				if ($update["message"]["from"]["id"] == $admin_id) {
-					preg_match_all("~#(\d+)\s@(\S*)", trim($update["message"]["text"]), $matches);
+					preg_match_all("/~#(\d+)\s@(\S*)/", trim($update["message"]["text"]), $matches);
 					if (isset($matches[0][2])) {
 						$ticketId = $matches[0][1];
 						$newUsername = $matches[0][2];
@@ -125,7 +125,7 @@ if (isset($chatID) && ($chatID == $todo_chatID)) {
 						if ($mysqli->error != '') {
 							post_reply("Datenbankfehler! @" . $admin_name . "\n" . $mysqli->error);
 						} else {
-							post_reply("Ticket {$ticketId} gehört nun {$newUsername}.");
+							post_reply("Ticket {$ticketId} gehört nun @{$newUsername}.");
 						}
 					}
 				} else {

@@ -363,22 +363,22 @@ function db_connect() {
 function post_todotable($addtext = '') {
 	global $chatID, $mysqli;
 
-	$sql = "SELECT ID, content, isintodo FROM tb_todolist WHERE isactive=1; --";
+	$sql = "SELECT ID, content, isintodo, wishby FROM tb_todolist WHERE isactive=1; --";
 	$result = $mysqli->query($sql);
 	if ($result->num_rows == 0) {
 		post_reply($addtext . "\n" . "Es gibt keine offenen Tickets.");
 	} else {
 		$replytext = $addtext . "\n\nAktuelle ToDo:\n";
-		$maxlength = 0;
+		$id_maxlength = 0;
 		$row_tmp = array();
 		while ($row = $result->fetch_object()) {
-			$maxlength = strlen($row->ID) < $maxlength ? $maxlength : strlen($row->ID);
+			$id_maxlength = strlen($row->ID) < $id_maxlength ? $id_maxlength : strlen($row->ID);
 			$row_tmp[] = $row;
 		}
 
 		foreach ($row_tmp as $row) {
 			$status = $row->isintodo == 1 ? "[*]" : "[+]";
-			$replytext .= $status . " " . str_pad($row->ID, $maxlength, "0", STR_PAD_LEFT) . "| " . $row->content . "\n";
+			$replytext .= $status . " " . str_pad($row->ID, $id_maxlength, "0", STR_PAD_LEFT) . "| " . $row->content . " (von {$row->wishby})\n";
 		}
 		post_reply($replytext);
 	}

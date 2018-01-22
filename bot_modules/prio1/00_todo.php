@@ -4,7 +4,7 @@ add_to_help("/todohelp --> Hilfe der ToDo-Gruppe");
 
 // ToDo-Gruppe
 // if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
-if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
+if (isset($chatID) && ($chatID == $todo_chatID)) {
 	if (isset($update["message"]["text"])) {
 		$startcommand_tmp = explode(" ", $update["message"]["text"]);
 		switch (str_replace($bot_atname, "", strtolower($startcommand_tmp[0]))) {
@@ -22,6 +22,7 @@ if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
 				$text .= "~#{NUMMER} --> Ticket jemand anderem zuweisen\n";
 				post_reply($text);
 				break;
+
 		}
 
 		$startsign = substr(trim($update["message"]["text"]), 0, 1);
@@ -37,7 +38,7 @@ if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
 				// remove todo
 				if ($update["message"]["from"]["id"] == $admin_id) {
 					// find ticketid
-					$tmp = preg_match_all("/#\s?([0-9]*)/", trim($update["message"]["text"]), $matches);
+					$tmp = preg_match_all("/#\s?(\d*)/", trim($update["message"]["text"]), $matches);
 					if (isset($matches[1][0])) {
 						$ticketID = $matches[1][0];
 
@@ -73,7 +74,7 @@ if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
 				// In ToDo nehmen
 				if ($update["message"]["from"]["id"] == $admin_id) {
 					// find ticketid
-					$tmp = preg_match_all("/#\s?([0-9]*)/", trim($update["message"]["text"]), $matches);
+					$tmp = preg_match_all("/#\s?(\d*)/", trim($update["message"]["text"]), $matches);
 					if (isset($matches[1][0])) {
 						$ticketID = $matches[1][0];
 
@@ -108,9 +109,9 @@ if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
 			case "~":
 				if ($update["message"]["from"]["id"] == $admin_id) {
 					preg_match_all("/~#(\d+)\s@(\S*)/", trim($update["message"]["text"]), $matches);
-					if (isset($matches[0][2])) {
-						$ticketId = $matches[0][1];
-						$newUsername = $matches[0][2];
+					if (isset($matches[1][0]) && isset($matches[2][0])) {
+						$ticketId = $matches[1][0];
+						$newUsername = $matches[2][0];
 						$sql = "UPDATE tb_todolist SET wishby = (SELECT userid FROM tb_lastseen_users WHERE atname = '{$newUsername}' LIMIT 1) WHERE ID='{$ticketId}'";
 						$mysqli->query($sql);
 						if ($mysqli->error != '') {
@@ -118,6 +119,8 @@ if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
 						} else {
 							post_reply("Ticket {$ticketId} gehört nun @{$newUsername}.");
 						}
+					}else{
+						post_reply("Format: ~#{TicketID} @{Nutzername}.");
 					}
 				} else {
 					post_reply("Sorry, das darf nur der Admin!");

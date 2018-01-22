@@ -23,5 +23,8 @@ git pull
 # restore config
 cp /tmp/php_telegram_bot/config.php config.php
 
+#delete tmp dir
+rm -rf /tmp/php_telegram_bot/
+
 # run updatescripts for further action
 php update_scripts/run.php

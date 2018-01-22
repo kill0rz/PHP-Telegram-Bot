@@ -13,10 +13,15 @@ git update-index --assume-unchanged bot_modules/prio1/03_lachsticker.php
 # don't worry, we will overwrite everything anyway...
 rm ./.git/index.lock
 
+#save config
+mkdir /tmp/php_telegram_bot
+cp config.php /tmp/php_telegram_bot/config.php
+
 # update from repo
-# git stash
 git pull
-# git stash pop
+
+# restore config
+cp /tmp/php_telegram_bot/config.php config.php
 
 # run updatescripts for further action
 php update_scripts/run.php

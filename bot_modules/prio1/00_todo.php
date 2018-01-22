@@ -4,20 +4,12 @@ add_to_help("/todohelp --> Hilfe der ToDo-Gruppe");
 
 // ToDo-Gruppe
 // if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
-if (isset($chatID) && ($chatID == $todo_chatID)) {
+if (isset($chatID) && ($chatID == $todo_chatID || $chatID == $bottest_chatID)) {
 	if (isset($update["message"]["text"])) {
 		$startcommand_tmp = explode(" ", $update["message"]["text"]);
 		switch (str_replace($bot_atname, "", strtolower($startcommand_tmp[0]))) {
 			case '/todolist':
 				post_todotable();
-				break;
-
-			case '/settodoowner':
-				if (!isset($startcommand_tmp[1]) || !isset($startcommand_tmp[2])) {
-					post_reply("Usage: /settodoowner #{TicketID} {Nutzername}");
-				} else {
-					// todo
-				}
 				break;
 
 			case '/todohelp':
@@ -30,7 +22,6 @@ if (isset($chatID) && ($chatID == $todo_chatID)) {
 				$text .= "~#{NUMMER} --> Ticket jemand anderem zuweisen\n";
 				post_reply($text);
 				break;
-
 		}
 
 		$startsign = substr(trim($update["message"]["text"]), 0, 1);

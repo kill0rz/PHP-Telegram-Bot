@@ -14,9 +14,9 @@ git update-index --assume-unchanged bot_modules/prio1/03_lachsticker.php
 rm ./.git/index.lock
 
 # update from repo
-git stash
+# git stash
 git pull
-git stash pop
+# git stash pop
 
 # run updatescripts for further action
 php update_scripts/run.php

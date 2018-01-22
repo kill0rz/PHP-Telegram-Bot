@@ -363,7 +363,7 @@ function db_connect() {
 function post_todotable($addtext = '') {
 	global $chatID, $mysqli;
 
-	$sql = "SELECT ID, content, isintodo, wishby FROM tb_todolist WHERE isactive=1; --";
+	$sql = "SELECT t.ID AS ID, t.content AS content, t.isintodo AS isintodo, l.username AS username FROM tb_todolist t JOIN tb_lastseen_users l ON t.wishby = l.userid WHERE t.isactive=1; --";
 	$result = $mysqli->query($sql);
 	if ($result->num_rows == 0) {
 		post_reply($addtext . "\n" . "Es gibt keine offenen Tickets.");
@@ -378,7 +378,7 @@ function post_todotable($addtext = '') {
 
 		foreach ($row_tmp as $row) {
 			$status = $row->isintodo == 1 ? "[*]" : "[+]";
-			$replytext .= $status . " " . str_pad($row->ID, $id_maxlength, "0", STR_PAD_LEFT) . "| " . $row->content . " (von {$row->wishby})\n";
+			$replytext .= $status . " " . str_pad($row->ID, $id_maxlength, "0", STR_PAD_LEFT) . "| " . $row->content . " (von {$row->username})\n";
 		}
 		post_reply($replytext);
 	}
